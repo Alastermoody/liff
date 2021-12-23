@@ -3,13 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>My LIFF app</title>
+  <title>รับที่ทำการเกษตร</title>
   <!--<link rel="stylesheet" href="css/style.css" media="all"> -->
   <script>
     document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime + '">')
   </script>
   <link rel="shortcut icon" href="icon/icon.ico" type="image/x-icon" />
   <link rel="icon" href="icon/icon.ico" type="image/x-icon" />
+  <link
+      href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
   <style media="screen">
     body {
       background: #6fa699;
@@ -21,6 +25,7 @@
   </style>
 </head>
 <body>
+  <p id="test"><b>test:</b> </p>
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
@@ -137,6 +142,7 @@
       document.getElementById("displayName").append(profile.displayName)
     }
 
+
     function getEnvironment() {
       document.getElementById("os").append(liff.getOS())
       document.getElementById("language").append(liff.getLanguage())
@@ -150,6 +156,11 @@
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
       }
+    }
+
+    async function test() {
+      import { getDatabase } from "firebase/database";
+      const database = getDatabase();
     }
   
 
