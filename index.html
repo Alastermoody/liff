@@ -21,20 +21,91 @@
   </style>
 </head>
 <body>
+  <div class="container">
+    <div class="row">
+      <div class="col s12 center-align">
+        <h5>สวัสดีคับ</h5>
+      </div>
+    </div>
   <div class="row">
-    <form id="province" class="col s12" autocomplete="off">
-      <!-- Start Select province -->
-      <label><h6>จังหว</h6></label>
+    <form id="fruit" class="col s12" autocomplete="off">
+      <!-- Start fruit-->
+      <label><h6>เลือกพืชที่คุณต้องการปลูกได้เลย</h6></label>
       <select
-        id="province"
+        id="fruit"
         class="browser-default"
         required
         class="validate"
       >
-        <option value="" disabled selected>เลือกจังหวัด</option>
-        <option value="1">อุตรดิตถ์</option>
+        <option value="" disabled selected>ชนิดพืชผักผลไม้</option>
+        <option value="1">ข้าวนาปรัง</option>
+        <option value="2">ข้าวนาปี</option>
+        <option value="3">ทุเรียนหมอนทอง</option>
+        <option value="4">ทุเรียนหลงรับแล</option>
+        <option value="5">ทุเรียนหลินรับแล</option>
+        <option value="6">มะม่วงหิมพานต์</option>
+        <option value="7">ลำไย</option>
+        <option value="8">เงาะโรงเรียน</option>
+        <option value="9">ข้าวโพดเลี้ยงสัตว์</option>
+        <option value="10">อ้อยโรงงาน</option>
       </select>
-      <!-- End Select province select -->
+      <!-- End fruit -->
+
+      <!-- start soil -->
+      <div class="input-field">
+        <label for="soil"><h6>ค่าเตรียมดิน </h6></label>
+        <input id="soil" type="text" required class="validate" />
+      </div>
+      <!-- End soil -->
+
+      <!-- start plant -->
+      <div class="input-field">
+        <label for="plant"><h6>ค่าปลูก และค่าเตรียมพันธุ์ </h6></label>
+        <input id="plant" type="text" required class="validate" />
+      </div>
+      <!-- End plant -->
+
+      <!-- start prepare -->
+      <div class="input-field">
+        <label for="prepare"><h6>ค่าดูแลพืช</h6></label>
+        <input id="prepare" type="text" required class="validate" />
+      </div>
+      <!-- End prepare -->
+
+      <!-- start harvest -->
+      <div class="input-field">
+        <label for="harvest"><h6>ค่าเก็บเกี่ยว รวบรวม</h6></label>
+        <input id="harvest" type="text" required class="validate" />
+      </div>
+      <!-- End harvest -->
+      
+      <!-- start varieties -->
+      <div class="input-field">
+        <label for="varient"><h6>ค่าปลูก และค่าเตรียมพันธุ์ </h6></label>
+        <input id="varient" type="text" required class="validate" />
+      </div>
+      <!-- End varieties -->
+
+      <!-- start fertilizer -->
+      <div class="input-field">
+        <label for="fertilizer"><h6>ค่าปุ๋ย</h6></label>
+        <input id="fertilizer" type="text" required class="validate" />
+      </div>
+      <!-- End fertilizer -->
+
+      <!-- start insect -->
+      <div class="input-field">
+        <label for="Insect"><h6>ค่ายาฆ่าแมลงและกำจัดศัตรูพืช</h6></label>
+        <input id="Insect" type="text" required class="validate" />
+      </div>
+      <!-- End insect -->
+
+      <!-- start etc -->
+      <div class="input-field">
+        <label for="etc"><h6>ค่าอื่นๆ เช่นนำมันเชื่อเพลิงค่าซ่อมอุปกรณ์</h6></label>
+        <input id="etc" type="text" required class="validate" />
+      </div>
+      <!-- End etc -->
       </select>
     </form>
   </div>
