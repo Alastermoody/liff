@@ -21,9 +21,6 @@
   </style>
 </head>
 <body>
-  <p id="language"><b>Language:</b> </p>
-  <p id="version"><b>Version:</b> </p>
-  <p id="isInClient"><b>isInClient:</b> </p>
   <p id="accessToken"><b>AccessToken:</b> </p>
   <img id="pictureUrl">
   <p id="userId"><b>userId:</b> </p>
@@ -150,46 +147,20 @@
       }
     }
 
-    async function sendMsg() {
-      if (liff.getContext().type !== "none" && liff.getContext().type !== "external") {
-        await liff.sendMessages ([
-          {
-            "type": "sticker",
-            "stickerId": 1,
-            "packgeId": 1
-          }
-        ])
-        alert("message sent")
-    }
-    }
-
     function getContext() {
-      document.getElementById("type").append(liff.getContext().type)
-      document.getElementById("viewType").append(liff.getContext().viewType)
-      document.getElementById("utouId").append(liff.getContext().utouId)
-      document.getElementById("roomId").append(liff.getContext().roomId)
-      document.getElementById("groudId").append(liff.getContext().groupId)
     }
 
     async function getUserProfile() {
       const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
       document.getElementById("userId").append(profile.userId)
-      document.getElementById("statusMessage").append(profile.statusMessage)
-      document.getElementById("displayName").append(profile.displayName)
     }
 
 
     function getEnvironment() {
-      document.getElementById("language").append(liff.getLanguage())
-      document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
-      document.getElementById("isInClient").append(liff.isInClient())
       if (liff.isInClient()) {
         document.getElementById("btnLogOut").style.display = "none"
       } else {
-        document.getElementById("btnMsg").style.display = "none"
-        document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
       }
     }
@@ -201,9 +172,7 @@
         if (liff.isLoggedIn()) {
           getEnvironment()
           getUserProfile()
-          getContext()
           getFriendship()
-          createUniversalLink()
         } else {
           liff.login()
         }
