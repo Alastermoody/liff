@@ -21,22 +21,6 @@
   </style>
 </head>
 <body>
-  <div class="row">
-    <form id="province" class="col s12" autocomplete="off">
-      <!-- Start Select province -->
-      <label><h6>จังหวัดที่ท่านทำการเกษตรอยู่</h6></label>
-      <select
-        id="province"
-        class="browser-default"
-        required
-        class="validate"
-      >
-        <option value="" disabled selected>เลือกจังหวัดที่ท่านทำการเกษตรอยู่</option>
-        <option value="1">อุตรดิตถ์</option>
-      </select>
-      <!-- End Select province select -->
-    </form>
-  </div>
   <p id="os"><b>OS:</b> </p>
   <p id="language"><b>Language:</b> </p>
   <p id="version"><b>Version:</b> </p>
@@ -58,6 +42,23 @@
   <p id="universalLink1"><b>Universal Link:</b> </p>
   <p id="universalLink2"><b>Universal Link with Query params:</b> </p>
   <p><a href="https://alastermoody.github.io/liff/path/?param=1">Link to Path</a></p>
+  <div class="row">
+    <form id="province" class="col s12" autocomplete="off">
+      <!-- Start Select province -->
+      <label><h6>จังหวัดที่ท่านทำการเกษตรอยู่</h6></label>
+      <select
+        id="province"
+        class="browser-default"
+        required
+        class="validate"
+      >
+        <option value="" disabled selected>เลือกจังหวัดที่ท่านทำการเกษตรอยู่</option>
+        <option value="1">อุตรดิตถ์</option>
+      </select>
+      <!-- End Select province select -->
+    </form>
+  </div>
+  <!-- End Form Content -->
 
   <button id="btnMsg" onclick="sendMsg()">Send Message</button>
   <button id="btnShare" onclick="shareMsg()">Share Target Picker</button>
@@ -167,11 +168,6 @@
         document.getElementById("btnScanCode").style.display = "none"
         document.getElementById("btnClose").style.display = "none"
       }
-    }
-
-    async function test() {
-      import { getDatabase } from "firebase/database";
-      const database = getDatabase();
     }
   
 
