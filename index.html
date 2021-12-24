@@ -187,10 +187,8 @@
         etc.clear(true);
         land.clear(true);
 
-        let labor = soil + plant + prepare + harvest;
-        let material = varieties + fertilizer + insect + etc;
         //ค่าวัสดุ + ค่าแรงงาน
-        let expenses = labor + material;
+        let expenses = soil + plant + prepare + harvest + varieties + fertilizer + insect + etc;
        
         //ต้นทุนรวมของเกษตรกร
         let resultCalculate = paymentCalculate(fruit,expenses);
@@ -232,12 +230,13 @@
       function getInputValue(id){
         return document.getElementById(id).value;
       }
-
+      var expensesIncludeVat =0;
       function vatRateCalculation(expenses, vatRate){
         let result = {};
         Object.keys(vatRate).forEach((term) => {
           let vat = expenses * ( 6.5 / 100) ;
-          let expensesIncludeVat = expenses + vat; 
+          expensesIncludeVat = expenses + vat; 
+
         })
       }
 
