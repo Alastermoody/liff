@@ -207,19 +207,11 @@
            expenses,
            resultCalculate
          );  
+        
       }
       //งง function to get form values
       function getInputValue(id){
         return document.getElementById(id).value;
-      }
-      // เดี๋ยวมาทำ
-      function paymentCalculate(fruit,expenses) {
-        switch (fruit) {
-          case 1:
-            var vatRate ={};
-            return vatRateCalculation(expenses, vatRate);
-            break;
-        }
       }
 
       function vatRateCalculation(expenses, vatRate){
@@ -229,12 +221,80 @@
           let expensesIncludeVat = expenses + vat; 
         })
       }
+
+      // เดี๋ยวมาทำ
+      function paymentCalculate(fruit,expensesIncludeVat) {
+        switch (fruit) {
+          case 1:
+            let resultCalculate = {};
+            Object.keys(brokenRate).forEach((term) =>{
+              let broken = 25.05 * square;
+              let resultCalculate = expensesIncludeVat + broken;
+
+              result[term] = {
+                resultCalculate: numberToString(resultCalculate),
+                broken: numberToString(broken),
+              };
+            })
+        }
+      }
+
       return result;
 
     }
 
+    function numberToString(number){
+      return number.toLocaleString("en-Us",{
+        minimumFractionDigits: 0,
+        maximumFractionDigits: 0,
+      });
+    }
+
+    function createResultTable(
+      fruit,
+      square,
+      expenses,
+      resultCalculate
+    ) {
+      let frutiTxt = numberToString(fruit);
+      let expensesTxt = numberToString(expenses);
+      let resultCalculateTxt = numberToString(resultCalculate)
+
+      document.getElementById(
+        "result"
+      ).innerHTML = `<!-- Add Table Data wiht Script -->
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>พืชที่คุณเลือกจะปลูก</th>
+              <th>ค่าวัสดุและข้าแรงงาน</th>
+              <th>ต้นทุนทั้งหมด</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${fruitTxt}</td>
+              <td>${expensesTxt}</td>
+              <td>${resultCalculateTxt}</td>
+              <td>${installment36}</td>
+              <td>${installment48}</td>
+              <td>${installment60}</td>
+              <td>${installment72}</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="red-text">
+          <p> ต้นทุนทั้งหมดนี้รวมถึง </p>
+          <p>
+            ภาษี ค่าเสื่อมอุปกรณ์ และค่าเสียโอกาศอุปกรณ์
+          </p>
+        </div>`;
+      
+    }
+
       
     runApp();
+    
     function logOut() {
       liff.logout()
       window.location.reload()
