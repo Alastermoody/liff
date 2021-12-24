@@ -3,10 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=0,viewport-fit=cover">
-  <title>รับที่ทำการเกษตร</title>
+  <title>ช่วยคำนวนต้นทุนในการปลูก</title>
   <!--<link rel="stylesheet" href="css/style.css" media="all"> -->
   <script>
-    document.write('<link rel="stylesheet" href="css/style.css?cache=' + new Date().getTime + '">')
+    document.write('<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons' + new Date().getTime + '">')
   </script>
   <link rel="shortcut icon" href="icon/icon.ico" type="image/x-icon" />
   <link rel="icon" href="icon/icon.ico" type="image/x-icon" />
@@ -106,6 +106,12 @@
         <input id="etc" type="text" required class="validate" />
       </div>
       <!-- End etc -->
+
+      <!-- Start submit Button -->
+      <button id="btn" class="btn waves-effect waves-light" type="submit">
+        คำนวณ
+      </button>
+      <!-- End submit Button -->
       </select>
     </form>
   </div>
@@ -121,7 +127,20 @@
   </script> 
 
   <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> 
+  <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.5.4"></script>
   <script>
+
+    function runApp() {
+      let soil = new AutoNumeric("#soil","integerPos");
+      let plant = new AutoNumeric("#plant","integerPos");
+      let prepare = new AutoNumeric("#prepare","integerPos");
+      let harvest = new AutoNumeric("#harvest","integerPos");
+      let varieties = new AutoNumeric("#varieties","integerPos");
+      let fertilizer = new AutoNumeric("#fertilizer","integerPos");
+      let insect = new AutoNumeric("#insect","integerPos");
+      let etc = new AutoNumeric("#etc","integerPos");
+
+    }
     function logOut() {
       liff.logout()
       window.location.reload()
