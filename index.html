@@ -206,9 +206,30 @@
            square,
            expenses,
            resultCalculate
-         );
-        
+         );  
       }
+      //งง function to get form values
+      function getInputValue(id){
+        return document.getElementById(id).value;
+      }
+      // เดี๋ยวมาทำ
+      function paymentCalculate(fruit,expenses) {
+        switch (fruit) {
+          case 1:
+            var vatRate ={};
+            return vatRateCalculation(expenses, vatRate);
+            break;
+        }
+      }
+
+      function vatRateCalculation(expenses, vatRate){
+        let result = {};
+        Object.keys(vatRate).forEach((term) => {
+          let vat = expenses * ( 6.5 / 100) ;
+          let expensesIncludeVat = expenses + vat; 
+        })
+      }
+      return result;
 
     }
 
