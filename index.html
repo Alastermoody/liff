@@ -56,6 +56,13 @@
       </select>
       <!-- End fruit -->
 
+      <!-- start square -->
+      <div class="input-field">
+        <label for="square"><h6>จำนวนไรที่ท่านต้องการปลูก</h6></label>
+        <input id="square" type="text" required class="validate" />
+      </div>
+      <!-- End suware -->
+
       <!-- start soil -->
       <div class="input-field">
         <label for="soil"><h6>ค่าเตรียมดิน </h6></label>
@@ -144,6 +151,7 @@
   <script>
 
     function runApp() {
+      let square = new AutoNumeric("#square","integerPos");
       let soil = new AutoNumeric("#soil","integerPos");
       let plant = new AutoNumeric("#plant","integerPos");
       let prepare = new AutoNumeric("#prepare","integerPos");
@@ -159,8 +167,10 @@
 
       function submitForm(e) {
         e.preventDefault();
+
         let fruit = Number(getInputValue("fruit"))
-        let soil = Number(getInputValue("soil"));
+        let square = Number(getInputValue("square").replace(/,/g, ""));
+        let soil = Number(getInputValue("soil").replace(/,/g, ""));
         let plant = Number(getInputValue("plant").replace(/,/g, ""));
         let prepare = Number(getInputValue("prepare").replace(/,/g, ""));
         let harvest = Number(getInputValue("harvest").replace(/,/g, ""));
@@ -172,6 +182,7 @@
 
         //reset form
         form.reset();
+        square.clear(true);
         soil.clear(true);
         plant.clear(true);
         prepare.clear(true);
@@ -182,10 +193,25 @@
         etc.clear(true);
         land.clear(true);
 
-        let use
+        let labor = soil + plant + prepare + harvest;
+        let material = varieties + fertilizer + insect + etc;
+        //ค่าวัสดุ + ค่าแรงงาน
+        let expenses = labor + material;
+       
+        //ต้นทุนรวมของเกษตรกร
+        let resultCalculate = paymentCalculate(fruit,expenses);
+
+         createResultTable(
+           fruit,
+           square,
+           expenses,
+           resultCalculate
+         );
         
       }
+
     }
+
       
     runApp();
     function logOut() {
