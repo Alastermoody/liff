@@ -207,9 +207,34 @@
            expenses,
            resultCalculate
          );  
-        
+         if (
+          liff.getContext().type !== "none" &&
+          liff.getContext().type !== "external"
+        ) {
+            // Create flex message
+          let message = createFlexMessage(
+            fruit,
+              expenses,
+              resultCalculate
+            );
+            // Send messages
+            liff
+              .sendMessages(message)
+              .then(() => {
+                liff.closeWindow();
+              })
+              .catch((err) => {
+                console.error(err.code, error.message);
+              });
+          } else {
+            // Result table
+            createResultTable(
+              expenses,
+              resultCalculate
+            );
+          }  
       }
-      //งง function to get form values
+      // function to get form values
       function getInputValue(id){
         return document.getElementById(id).value;
       }
@@ -288,13 +313,19 @@
           <p>
             ภาษี ค่าเสื่อมอุปกรณ์ และค่าเสียโอกาศอุปกรณ์
           </p>
-        </div>`;
-      
+        </div>`;   
+    function createFlexMessage(carYear, carPrice, downPayment, loan, resultCalculate) {
+      let fruit = numberToString(fruit);
+      let square = numberToString(square);
+      let expenses = numberToString(expenses);
+      let resultCalculate = numberToString(resultCalculate)
     }
 
-      
-    runApp();
-    
+    let flexJson = {};
+
+    return [{ type: "flex", altText: "สู้ๆครับ", contents: flexJson }];
+  
+    }
     function logOut() {
       liff.logout()
       window.location.reload()
