@@ -14,7 +14,7 @@
     body {
       background: #6fa699;
       color: rgba(0, 0, 0, 0.87);
-      font-family: Roboto, Helvetica, Arial, sans-serif;
+      font-family: "kanit", sans-serif;
       margin: 0;
       padding: 0;
     }
@@ -23,12 +23,12 @@
 <body>
   <div class="container">
     <div class="row">
-      <div class="col s12 center-align">
+      <div class="center-align">
         <h5>สวัสดีคับ</h5>
       </div>
     </div>
   <div class="row">
-    <form id="fruit" class="col s12" autocomplete="off">
+    <form id="fruitForm" class="col s12" autocomplete="off">
       <!-- Start fruit-->
       <label><h6>เลือกพืชที่คุณต้องการปลูกได้เลย</h6></label>
       <select
@@ -40,14 +40,19 @@
         <option value="" disabled selected>ชนิดพืชผักผลไม้</option>
         <option value="1">ข้าวนาปรัง</option>
         <option value="2">ข้าวนาปี</option>
-        <option value="3">ทุเรียนหมอนทอง</option>
-        <option value="4">ทุเรียนหลงรับแล</option>
-        <option value="5">ทุเรียนหลินรับแล</option>
-        <option value="6">มะม่วงหิมพานต์</option>
-        <option value="7">ลำไย</option>
-        <option value="8">เงาะโรงเรียน</option>
-        <option value="9">ข้าวโพดเลี้ยงสัตว์</option>
-        <option value="10">อ้อยโรงงาน</option>
+        <option value="3">ถั่วเขียว</option>
+        <option value="4">มันสำปะหลัง</option>
+        <option value="5">ข้าวโพดเลี้ยงสัตว์</option>
+        <option value="6">อ้อยโรงงาน</option>
+        <option value="7">ข้าวโพดเลี้ยงสัตว์</option>
+        <option value="8">ถั่วลิสง</option>
+        <option value="9">มะพร้าว</option>
+        <option value="10">ทุเรียนหมอนทอง</option>
+        <option value="11">ทุเรียนหลงรับแล</option>
+        <option value="12">ทุเรียนหลินรับแล</option>
+        <option value="13">มะม่วงหิมพานต์</option>
+        <option value="14">ลำไย</option>
+        <option value="15">เงาะโรงเรียน</option>
       </select>
       <!-- End fruit -->
 
@@ -95,8 +100,8 @@
 
       <!-- start insect -->
       <div class="input-field">
-        <label for="Insect"><h6>ค่ายาฆ่าแมลงและกำจัดศัตรูพืช</h6></label>
-        <input id="Insect" type="text" required class="validate" />
+        <label for="insect"><h6>ค่ายาฆ่าแมลงและกำจัดศัตรูพืช</h6></label>
+        <input id="insect" type="text" required class="validate" />
       </div>
       <!-- End insect -->
 
@@ -106,6 +111,13 @@
         <input id="etc" type="text" required class="validate" />
       </div>
       <!-- End etc -->
+
+      <!-- start land -->
+      <div class="input-field">
+        <label for="land"><h6>ค่าเช่าที่ดิน</h6></label>
+        <input id="land" type="text" required class="validate" />
+      </div>
+      <!-- End land -->
 
       <!-- Start submit Button -->
       <button id="btn" class="btn waves-effect waves-light" type="submit">
@@ -126,8 +138,9 @@
     errorPlease()
   </script> 
 
-  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script> 
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.5.4"></script>
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
   <script>
 
     function runApp() {
@@ -139,8 +152,42 @@
       let fertilizer = new AutoNumeric("#fertilizer","integerPos");
       let insect = new AutoNumeric("#insect","integerPos");
       let etc = new AutoNumeric("#etc","integerPos");
+      let land = new AutoNumeric("#land","integerPos");
 
+      let fruit = document.getElementById("fruitForm");
+      form.addEventListener("submit",submitForm);
+
+      function submitForm(e) {
+        e.preventDefault();
+        let fruit = Number(getInputValue("fruit"))
+        let soil = Number(getInputValue("soil"));
+        let plant = Number(getInputValue("plant").replace(/,/g, ""));
+        let prepare = Number(getInputValue("prepare").replace(/,/g, ""));
+        let harvest = Number(getInputValue("harvest").replace(/,/g, ""));
+        let varieties = Number(getInputValue("varieties").replace(/,/g, ""));
+        let fertilizer = Number(getInputValue("fertilizer").replace(/,/g, ""));
+        let insect = Number(getInputValue("insect").replace(/,/g, ""));
+        let etc = Number(getInputValue("etc").replace(/,/g, ""));
+        let land = Number(getInputValue("land").replace(/,/g, ""));
+
+        //reset form
+        form.reset();
+        soil.clear(true);
+        plant.clear(true);
+        prepare.clear(true);
+        harvest.clear(true);
+        varieties.clear(true);
+        fertilizer.clear(true);
+        insect.clear(true);
+        etc.clear(true);
+        land.clear(true);
+
+        let use
+        
+      }
     }
+      
+    runApp();
     function logOut() {
       liff.logout()
       window.location.reload()
