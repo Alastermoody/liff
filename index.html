@@ -121,7 +121,7 @@
       <!-- End land -->
 
       <!-- Start submit Button -->
-      <button id="btn" class="btn waves-effect waves-light" type="submit">
+      <button id="btn" class="btn waves-effect waves-light" type="submit" onclick="submitForm()">
         คำนวณ
       </button>
       <!-- End submit Button -->
@@ -129,8 +129,6 @@
     </form>
   </div>
   <!-- End Form Content -->
-  <button id="btnLogOut" onclick="logOut()">Log Out</button>
-  <button id="btnClose" onclick="closed()">Close</button>
 
   <script src="js/vconsole.min.js"></script> 
   <script>
@@ -161,7 +159,7 @@
 
       function submitForm(e) {
         e.preventDefault();
-
+        console.log("==========>submitForm")
         let fruit = Number(getInputValue("fruit"))
         let square = Number(getInputValue("square").replace(/,/g, ""));
         let soil = Number(getInputValue("soil").replace(/,/g, ""));
@@ -318,10 +316,6 @@
 
     return [{ type: "flex", altText: "สู้ๆครับ", contents: flexJson }];
   
-    }
-    function logOut() {
-      liff.logout()
-      window.location.reload()
     }
 
     async function getFriendship() {
